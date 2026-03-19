@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 # Weight とルーティンとルーティンのログを作る
 
-# 体重のクラス　フロントエンドから受け取る
+# 体重のクラス　フロントエンドから受け取る　id をuuidにした方がいいかもしれない。　後でする
 class Weight(models.Model):
     # accountと紐づけ
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
