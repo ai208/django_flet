@@ -46,16 +46,27 @@ class RoutineViewSet(viewsets.ModelViewSet):
 
 class RoutineRecordViewSet(viewsets.ModelViewSet):
     # allはやめたほうがいい。 router用で必要
-    queryset = RoutineRecord.objects.all()
+    queryset = RoutineRecord.objects.all() # 2つしか出ないバグの原因
     # スペルミス
     serializer_class = RoutineRecordSerializer
     #ログインしているユーザーだけ
     def get_queryset(self):
+        queryset= RoutineRecord.objects.all()
+        # user のフィルター
         if self.request.user.is_authenticated:
-            return RoutineRecord.objects.filter(user=self.request.user)
+            queryset= queryset.filter(user=self.request.user)
         else:# createと同様にする
             User = get_user_model()
-            return RoutineRecord.objects.filter(user=User.objects.get(id=1))
+            queryset = queryset.filter(user=User.objects.get(id=1)) #id = 1は仮？
+        # routine fileter
+        routine = self.request.query_params.get("routine")
+        if routine:
+            queryset = queryset.filter(routine = routine)
+        # date fileter
+        date = self.request.query_params.get("date")
+        if date:
+            queryset = queryset.filter(date=date)
+        return queryset
     # 作成の時、自動で認識する
     def perform_create(self,serializer):
         if self.request.user.is_authenticated: #いつもはサーバー側で受け取ってユーザーをセット
