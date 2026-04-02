@@ -1,7 +1,7 @@
 import flet as ft
 import requests
 from datetime import date
-
+# 一ページであまり良くない
 API_ROUTINE_URL = "http://localhost:8000/api/routines/"
 API_RECORD_URL = "http://localhost:8000/api/routinerecords/"
 USER_ID = 1  # テスト用

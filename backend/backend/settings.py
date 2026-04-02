@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+# 18の方でやった。　起動したときに、エラーが出ることがある。タスクマネージャー　サービスから　17を停止　18を起動すると動くようになる
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

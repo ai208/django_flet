@@ -1,7 +1,7 @@
 import flet as ft
 import requests
 from datetime import date
-
+# 一ページのもの
 API_URL = "http://localhost:8000/api/weights/"  # Django API URL
 
 def main(page: ft.Page):
