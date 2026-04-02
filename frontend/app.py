@@ -1,10 +1,11 @@
 import flet as ft
-from controllers.routine_controller import RoutineController
-from views.routine_view import RoutineView
-# ここで展開する　dashboard でする。
-def main(page):
-    routine_controller = RoutineController(user_id=1)
-    routine_view = RoutineView(page,routine_controller)
-    page.add(routine_view.build())
+from views.dashboard_view import DashboardView
+# dashboard 完成した。
+def main(page: ft.Page):
+    page.title = "ホーム画面"
+    user_id = 1
+    dashboard_view= DashboardView(page,user_id)
+    page.add(dashboard_view.build())
 
-ft.app(target=main)
+if __name__ == "__main__":
+    ft.app(target=main)

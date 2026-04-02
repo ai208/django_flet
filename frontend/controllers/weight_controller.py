@@ -1,6 +1,6 @@
 # from services.routine_api import *
 import services.weight_api as weight_api
-# 相対パスと絶対パス　テストの時に異常があった
+# 相対パスと絶対パス　テストの時に異常があった テストが動くようにすると、通常で動かない
 # controller
 # get と save の二つ
 # save では場合分けがある。
